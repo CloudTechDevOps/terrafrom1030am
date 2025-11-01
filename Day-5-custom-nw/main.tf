@@ -2,7 +2,7 @@
 resource "aws_vpc" "name" {
     cidr_block = "10.0.0.0/16"
     tags = {
-      Name = "cust-vpc"
+        Name = "dev"
     }
   
 }
@@ -12,9 +12,8 @@ resource "aws_subnet" "name" {
     cidr_block = "10.0.0.0/24"
     availability_zone = "us-east-1a"
     tags = {
-      Name = "cust-subnet-1-public"
+      Name = "dev-subnet"
     }
-  
 }
 
 resource "aws_subnet" "name-2" {
