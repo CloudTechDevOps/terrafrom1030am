@@ -127,13 +127,13 @@ resource "null_resource" "run_script" {
     }
 
     inline = [
-      "echo 'hello from awsdevopsmulticloud-by-veera-nareshit' >> /home/ubuntu/file200"
+      "echo 'hello from awsdevopsmulticloud-by-veera-nareshit-devops' >> /home/ubuntu/file200"
     ]
   }
 
-  triggers = {
-    always_run = "${timestamp()}" # Forces rerun every time
-  }
+#   triggers = {
+#     always_run = "${timestamp()}" # Forces rerun every time
+#   }
 }
 
 #re-running null_resource depend on timestamp not on content modification.. becuse state file is not tracking inside the content 

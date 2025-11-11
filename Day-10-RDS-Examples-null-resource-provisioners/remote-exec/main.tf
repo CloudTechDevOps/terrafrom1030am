@@ -4,6 +4,7 @@ resource "aws_instance" "sql_runner" {
   instance_type          = "t2.micro"
   key_name               = "my-key"                # Replace with your key pair name
   associate_public_ip_address = true
+  user_data = "sudo yum install mariadb105-server -y"
 
   tags = {
     Name = "SQL Runner"
@@ -28,7 +29,8 @@ resource "null_resource" "remote_sql_exec" {
 
   provisioner "remote-exec" {
     inline = [
-      "mysql -h ${aws_db_instance.mysql_rds.address} -u ${jsondecode(aws_secretsmanager_secret_version.rds_secret_value.secret_string)["username"]} -p${jsondecode(aws_secretsmanager_secret_version.rds_secret_value.secret_string)["password"]} < /tmp/init.sql"
+      #"mysql -h ${aws_db_instance.mysql_rds.address} -u ${jsondecode(aws_secretsmanager_secret_version.rds_secret_value.secret_string)["username"]} -p${jsondecode(aws_secretsmanager_secret_version.rds_secret_value.secret_string)["password"]} < /tmp/init.sql"
+      "mysql -h <endpoint> -u admin -ppassword"
     ]
   }
 
