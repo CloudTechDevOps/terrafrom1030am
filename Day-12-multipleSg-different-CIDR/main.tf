@@ -1,7 +1,6 @@
 variable "allowed_ports" {
   type = map(string)
   default = {
-    key_name = "value"
     22    = "203.0.113.0/24"    # SSH (Restrict to office IP)
     80    = "0.0.0.0/0"         # HTTP (Public)
     443   = "0.0.0.0/0"         # HTTPS (Public)
